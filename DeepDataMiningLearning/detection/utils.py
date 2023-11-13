@@ -222,7 +222,7 @@ def collate_fn(batch):
     return tuple(zip(*batch))
 
 #from ultralytics\data\dataset.py
-@staticmethod
+# @staticmethod
 def mycollate_fn(batch): #16 imagefile list, each item is a dict
     """Collates data samples into batches."""
     #test=tuple(zip(*batch))

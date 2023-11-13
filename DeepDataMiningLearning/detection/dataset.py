@@ -217,7 +217,8 @@ from DeepDataMiningLearning.detection.dataset_yolo import YOLODataset
 def get_yolodataset(is_train, is_val, args):
     rootPath=args.data_path #'/data/cmpe249-fa23/coco/'
     #annotation=args.annotationfile #'/data/cmpe249-fa23/coco/train2017.txt'
-    dataset_cfgfile = './DeepDataMiningLearning/detection/dataset.yaml'
+    # dataset_cfgfile = './DeepDataMiningLearning/detection/dataset.yaml'
+    dataset_cfgfile = 'dataset.yaml' ## The dataset config file path was wrong
     with open(dataset_cfgfile, errors='ignore', encoding='utf-8') as f:
         s = f.read()  # string
         data = yaml.safe_load(s) or {}  # always return a dict (yaml.safe_load() may return None for empty files)

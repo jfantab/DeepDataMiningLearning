@@ -273,11 +273,15 @@ class Detect(nn.Module):
     def forward(self, x):
         """Concatenates and returns predicted bounding boxes and class probabilities."""
         shape = x[0].shape  # BCHW [1, 64, 32, 32] [1, 128, 16, 16] [1, 256, 8, 8]
-        for i in range(self.nl):
-            x[i] = torch.cat((self.cv2[i](x[i]), self.cv3[i](x[i])), 1)
+        # for i in range(self.nl):
+        #     x[i] = torch.cat((self.cv2[i](x[i]), self.cv3[i](x[i])), 1)
+        for i, c2 in enumerate(self.cv2):
+            for j, c3 in enumerate(self.cv3):
+                if j == i:
+                    x[i] = torch.cat((c2(x[i]), c3(x[i])), 1)        
         if self.training:
             return x
-        elif self.dynamic or self.shape != shape:
+        elif self.shape != shape:
             self.anchors, self.strides = (x.transpose(0, 1) for x in make_anchors(x, self.stride, 0.5))
             self.shape = shape
 

@@ -229,7 +229,7 @@ def main(args):
     #im.save("../../data/testinference.png", "PNG")
 
     modelname = 'yolov8'
-    imgpath = './sampledata/bus.jpg'
+    # imgpath = './sampledata/bus.jpg'
     ckpt_file = '/data/cmpe249-fa23/modelzoo/yolov8n_statedicts.pt'
     device = 'cuda:0'
     multimodel_inference(modelname, imgpath, ckpt_file, device, scale='n')

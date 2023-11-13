@@ -89,7 +89,7 @@ class YoloDetectionModel(nn.Module):
         initialize_weights(self)
     
     #ref BaseModel forward in ultralytics\nn\tasks.py
-    def forward(self, x, *args, **kwargs):
+    def forward(self, x):
         """
         Forward pass of the model on a single scale.
         Wrapper for `_forward_once` method.
@@ -101,7 +101,7 @@ class YoloDetectionModel(nn.Module):
             (torch.Tensor): The output of the network.
         """
         if isinstance(x, dict):# for cases of training and validating while training.
-            return self.loss(x, *args, **kwargs)
+            return self.loss(x)
         elif self.training:
             preds = self._predict_once(x) #tensor input
             return preds #training mode, direct output x (three items)
@@ -492,8 +492,11 @@ import torchvision
 
 def create_yolomodel(modelname, num_classes, ckpt_file, fp16 = False, device = 'cuda:0', scale='n'):
     
-    modelcfg_file=os.path.join('./DeepDataMiningLearning/detection/modules', modelname+'.yaml')
-    cfgPath='./DeepDataMiningLearning/detection/modules/default.yaml'
+    # modelcfg_file=os.path.join('./DeepDataMiningLearning/detection/modules', modelname+'.yaml')
+    # cfgPath='./DeepDataMiningLearning/detection/modules/default.yaml'
+    ## The above two config file paths were not working
+    modelcfg_file = f"modules/{modelname}.yaml"
+    cfgPath = "modules/default.yaml"
     myyolov8 = None
     preprocess =None
     classesList = None

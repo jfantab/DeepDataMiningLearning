@@ -78,11 +78,11 @@ class Concat(nn.Module):
         super().__init__()
         self.d = dimension
 
-    def forward(self, x):
+    from typing import Tuple
+    def forward(self, x: Tuple[torch.Tensor, torch.Tensor]):
         """Forward pass for the YOLOv8 mask Proto module."""
         return torch.cat(x, self.d)
-
-
+    
 class Chuncat(nn.Module):
     def __init__(self, dimension=1):
         super(Chuncat, self).__init__()

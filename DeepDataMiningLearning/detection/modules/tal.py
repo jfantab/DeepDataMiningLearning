@@ -246,7 +246,7 @@ class TaskAlignedAssigner(nn.Module):
         return target_labels, target_bboxes, target_scores
 
 
-def make_anchors(feats, strides, grid_cell_offset=0.5): #strides=[ 8., 16., 32.]
+def make_anchors(feats, strides, grid_cell_offset: float=0.5): #strides=[ 8., 16., 32.]
     """Generate anchors from features."""
     anchor_points, stride_tensor = [], []
     assert feats is not None

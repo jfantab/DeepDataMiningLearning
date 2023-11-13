@@ -4,6 +4,30 @@ Data mining, machine learning, and deep learning sample codes for SJSU CMPE255 D
 * Large language Models (LLMs) part is newly added
 * You can also view the documents in: [readthedocs](https://deepdatamininglearning.readthedocs.io/en/latest/)
 
+## Edits made
+
+For inference, I created the following two files. I was focusing more on Torchscript, but I wanted to also try out Tensor RT.
+
+```
+DeepDataMiningLearning/detection/torchscript_model.py
+DeepDataMiningLearning/detection/tensorrt_model.py
+```
+
+I made edits to the following module files for YOLOv8 to try to get Torchscript to work:
+
+```
+DeepDataMiningLearning/detection/modules/block.py
+DeepDataMiningLearning/detection/modules/head.py
+DeepDataMiningLearning/detection/modules/tal.py
+```
+
+I also made some minor bug fixes to the following files, mainly pertaining to file paths:
+
+```
+DeepDataMiningLearning/detection/dataset.py
+DeepDataMiningLearning/detection/modules/yolomodels.py DeepDataMiningLearning/detection/utils.py
+```
+
 ## Setups
 Install this python package (optional) via
 
